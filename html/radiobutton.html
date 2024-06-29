@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function changeColor(color) {
+            document.getElementById('colorBox').style.backgroundColor = color;
+        }
+    </script>
+</head>
+<body>
+    <div id="colorBox" style="height: 100px; width: 100px; border: 1px solid black;"></div>
+    <br/>
+    <br/>
+    <input type="radio" name="r1" onclick="changeColor('red')">Red</input>
+    <input type="radio" name="r1" onclick="changeColor('blue')">Blue</input>
+    <input type="radio" name="r1" onclick="changeColor('green')">Green</input>
+</body>
+</html>
