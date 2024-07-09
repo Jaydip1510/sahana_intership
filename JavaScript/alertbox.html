@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Task_js_5</title>
+
+     <script>
+          function Abc() {
+               var a1 = document.getElementById("a1").value;
+               var a2 = document.getElementById("a2").value;
+               var a3 = document.getElementById("a3").value;
+
+               if (a1 === "") {
+                    alert("Please enter First Name");
+               } else if (a2 === "") {
+                    alert("Please enter Middle Name");
+               } else if (a3 === "") {
+                    alert("Please enter Last Name");
+               }
+          }
+
+     </script>
+
+</head>
+
+<body>
+     <label for="">Frist Name :</label>
+     <input type="text" id="a1"><br><br>
+
+     <label for="">Middle Name :</label>
+     <input type="text" id="a2"><br><br>
+
+     <label for="">Last Name :</label>
+     <input type="text" id="a3"><br><br>
+
+     <input type="button" value="Add" onclick="Abc()">
+
+</body>
+
+</html>

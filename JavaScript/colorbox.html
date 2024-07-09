@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Change Box Color Task_js_8</title>
+
+     <style>
+          .box {
+               width: 100px;
+               height: 100px;
+               border: 1px solid black;
+          }
+     </style>
+
+
+     <script>
+          function changeColor(radio) {
+               document.getElementById('box').style.backgroundColor = radio.value;
+          }
+     </script>
+
+</head>
+<body>
+    <div id="box" class="box"></div>
+    <br><br>
+
+    <label>
+         <input type="radio" name="color" value="red" onchange="changeColor(this)"> Red <br>
+    </label>
+    <label>
+         <input type="radio" name="color" value="green" onchange="changeColor(this)"> Green<br>
+    </label>
+    <label>
+         <input type="radio" name="color" value="blue" onchange="changeColor(this)"> Blue
+    </label>
+
+</body>
+</html>
+
