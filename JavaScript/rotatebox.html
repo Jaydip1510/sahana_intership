@@ -1,0 +1,70 @@
+</body>
+</html>
+<html>
+<head>
+    <style>
+        #myContainer {
+            width: 400px;
+            height: 400px;
+            position: relative;
+            background: yellow;
+        }
+        #myAnimation {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            background-color: red;
+        }
+    </style>
+</head>
+<body onload="myMove()">
+
+<div id="myContainer">
+    <div id="myAnimation"></div>
+</div>
+
+<script>
+var id = null;
+function myMove() {
+    var elem = document.getElementById("myAnimation");   
+    var posX = 0, posY = 0;
+    var dx = 1, dy = 1;
+    var direction = 'diagonal';
+    var colors = ['red', 'blue', 'green', 'purple'];
+    var colorIndex = 0;
+
+    clearInterval(id);
+    id = setInterval(frame, 0.1);
+
+    function changeColor() {
+        colorIndex = (colorIndex + 1) % colors.length;
+        elem.style.backgroundColor = colors[colorIndex];
+    }
+
+    function frame() {
+        if (direction === 'diagonal') {
+            posX = posX + dx;
+            posY = posY + dy;
+
+            if (posX + elem.offsetWidth >= 400 || posY + elem.offsetHeight >= 400) {
+                direction = 'upwards';
+                changeColor();
+            }
+        } else if (direction === 'upwards') {
+            posY -= dy;
+
+            if (posY <= 0) {
+                direction = 'diagonal';
+                dx = -dx; 
+                changeColor();
+            }
+        }
+
+        elem.style.left = posX + 'px'; 
+        elem.style.top = posY + 'px'; 
+    }
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Document</title>
+     <script>
+          function fn() {
+               var firstName = document.getElementById("firstName");
+               var firstNameError = document.getElementById("firstNameError");
+
+               var middleName = document.getElementById("middleName");
+               var middleNameError = document.getElementById("middleNameError");
+
+               var lastName = document.getElementById("lastName");
+               var lastNameError = document.getElementById("lastNameError");
+
+               if (firstName.value == "") {
+                    firstNameError.style.display = "";
+                    firstName.style.border = "1px solid red";
+               } else {
+                    firstNameError.style.display = "none";
+                    firstName.style.border = "";
+               }
+
+               if (middleName.value == "") {
+                    middleNameError.style.display = "";
+                    middleName.style.border = "1px solid red";
+               } else {
+                    middleNameError.style.display = "none";
+                    middleName.style.border = "";
+               }
+
+               if (lastName.value == "") {
+                    lastNameError.style.display = "";
+                    lastName.style.border = "1px solid red";
+               } else {
+                    lastNameError.style.display = "none";
+                    lastName.style.border = "";
+               }
+          }
+     </script>
+</head>
+
+<body>
+     First Name : <input type="text" id="firstName" onkeypress="fn()">
+     <span style="display: none;color:red;" id="firstNameError">
+          Please, Enter First Name
+     </span>
+     <br><br>
+
+     Middle Name : <input type="text" id="middleName" onkeydown="fn()">
+     <span style="display: none;color:red;" id="middleNameError">
+          Please, Enter Middle Name
+     </span>
+     <br><br>
+
+     Last Name : <input type="text" id="lastName" onkeyup="fn()">
+     <span style="display: none;color:red;" id="lastNameError">
+          Please, Enter Last Name
+     </span>
+     <br><br>
+
+     <input type="button" value="Add" onclick="fn()">
+</body>
+
+</html>
