@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Table</title>
+    <style>
+        table {
+            width: 50%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Enter Any number :</h2>
+<input type="number" id="numRows" min="1">
+<button onclick="createTable()">Create</button>
+<br>
+<br>
+
+<table id="dynamicTable">
+    <thead>
+        <tr>
+            <th>Row Number</th>
+        </tr>
+    </thead>
+    <tbody id="tableBody">    
+    </tbody>
+</table>
+
+<h2>Total: <span id="totalSum">0</span></h2>
+
+<script>
+    function createTable() {
+        var numRows = document.getElementById('numRows').value;
+        var tableBody = document.getElementById('tableBody');
+        tableBody.innerHTML = '';
+
+        var total = 0;
+
+        for (var i = 0; i < numRows; i++) {
+            var tr = document.createElement('tr');
+            
+            var tdRowNum = document.createElement('td');
+            tdRowNum.innerHTML = i + 1;
+            tr.appendChild(tdRowNum);
+
+            total += i + 1;
+            
+            tableBody.appendChild(tr);
+        }
+
+        document.getElementById('totalSum').innerHTML = total;
+        document.getElementById('numRows').value = ''; 
+    }
+</script>
+
+</body>
+</html>

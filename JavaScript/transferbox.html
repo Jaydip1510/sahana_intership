@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+      var i = 0;
+      var direction = 'downRight'; // Initial direction
+      var speed = 1; // Speed of movement
+
+      function abc(){
+         var a1 = document.getElementById("a1");
+         if (direction === 'downRight') {
+            a1.style.marginTop = i + "px";
+            a1.style.marginLeft = i + "px";
+            if (i >= 360) { // Stop at the bottom-right corner
+                direction = 'upRight';
+                i = 0; // Reset the counter for upRight movement
+            }
+         } else if (direction === 'upRight') {
+            a1.style.marginTop = (360 - i) + "px";
+            a1.style.marginLeft = "360px";
+            if (i >= 360) { // Stop at the top-right corner
+                direction = 'downLeft';
+                i = 0; // Reset the counter for downLeft movement
+            }
+         } else if (direction === 'downLeft') {
+            a1.style.marginTop = "360px";
+            a1.style.marginLeft = (360 - i) + "px";
+            if (i >= 360) { // Stop at the bottom-left corner
+                direction = 'upLeft';
+                i = 0; // Reset the counter for upLeft movement
+            }
+         } else if (direction === 'upLeft') {
+            a1.style.marginTop = (360 - i) + "px";
+            a1.style.marginLeft = "0px";
+            if (i >= 360) { // Stop at the top-left corner
+                return; // Stop the animation
+            }
+         }
+         i += speed; // Increment the counter based on speed
+         setTimeout(abc, 10); // Call the function again after 10ms
+      }
+
+      window.onload = abc; // Ensure the function is called when the window loads
+</script>
+<body>
+     <div style="border: 1px solid black; height: 400px; width: 400px; ">
+         <div id="a1" style="border: 1px solid black; height: 40px; width: 40px; background-color: springgreen;">
+         </div>
+     </div>
+</body>
+</html>

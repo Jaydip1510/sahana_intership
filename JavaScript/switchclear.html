@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Div-task</title>
+    <style>
+        .c1 {
+            border: 1px solid black;
+            height: 100px;
+            width: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            color: black;
+        }
+        .f1 {
+            display: flex;
+        }
+    </style>
+</head>
+<body>
+    <div class="f1">
+        <div id="c1" class="c1" onclick="abc(this)"></div>
+        <div id="c2" class="c1" onclick="abc(this)"></div>
+        <div id="c3" class="c1" onclick="abc(this)"></div>
+    </div>
+    <div class="f1">
+        <div id="c4" class="c1" onclick="abc(this)"></div>
+        <div id="c5" class="c1" onclick="abc(this)"></div>
+        <div id="c6" class="c1" onclick="abc(this)"></div>
+    </div>
+    <div class="f1">
+        <div id="c7" class="c1" onclick="abc(this)"></div>
+        <div id="c8" class="c1" onclick="abc(this)"></div>
+        <div id="c9" class="c1" onclick="abc(this)"></div>
+    </div>
+
+    <script>
+        let pqr = 0;
+
+        function abc(c1) {
+            if (c1.innerHTML == "") {
+                if (pqr % 2 == 0) {
+                    c1.innerHTML = "0";
+                } else {
+                    c1.innerHTML = "X";
+                }
+                pqr++;
+                checkWin();
+            }
+        }
+
+        function checkWin() {
+            if (
+                checkwin("c1", "c2", "c3") ||
+                checkwin("c4", "c5", "c6") ||
+                checkwin("c7", "c8", "c9") ||
+                checkwin("c1", "c4", "c7") ||
+                checkwin("c2", "c5", "c8") ||
+                checkwin("c3", "c6", "c9") ||
+                checkwin("c1", "c5", "c9") ||
+                checkwin("c3", "c5", "c7")
+            ) {
+                resetBoard();
+            } else if (isDraw()) {
+                alert("It's a draw!");
+                resetBoard();
+            }
+        }
+
+        function checkwin(c1, c2, c3) {
+            var a = document.getElementById(c1);
+            var b = document.getElementById(c2);
+            var c = document.getElementById(c3);
+
+            if (a.innerHTML == "0" && b.innerHTML == "0" && c.innerHTML == "0") {
+                alert("0 wins!");
+                return true;
+            }
+            if (a.innerHTML == "X" && b.innerHTML == "X" && c.innerHTML == "X") {
+                alert("X wins!");
+                return true;
+            }
+            return false;
+        }
+
+        function isDraw() {
+            for (let i = 1; i <= 9; i++) {
+                if (document.getElementById("c" + i).innerHTML == "") {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        function resetBoard() {
+            for (let i = 1; i <= 9; i++) {
+                document.getElementById("c" + i).innerHTML = "";
+            }
+            pqr = 0;
+        }
+    </script>
+</body>
+</html>

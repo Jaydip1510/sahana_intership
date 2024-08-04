@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Div-task</title>
+    <style>
+        .c1 {
+            border: 1px solid black;
+            height: 100px;
+            width: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+           
+        }
+        .f1{
+            display: flex;
+        }
+    </style>
+</head>
+<body>
+ <div class="f1">
+    <div class="c1" onclick="abc(this)"></div>
+    <div class="c1" onclick="abc(this)"></div>
+    <div class="c1" onclick="abc(this)"></div>
+</div>
+<div class="f1">
+    <div class="c1" onclick="abc(this)"></div>
+    <div class="c1" onclick="abc(this)"></div>
+    <div class="c1" onclick="abc(this)"></div>
+</div>
+<div class="f1">
+    <div class="c1" onclick="abc(this)"></div>
+    <div class="c1" onclick="abc(this)"></div>
+    <div class="c1" onclick="abc(this)"></div>
+</div>
+
+
+    <script>
+        let pqr = true;
+
+        function abc(cell) {
+            if (cell.innerHTML === '') {
+                cell.innerHTML = pqr ? '0' : 'X';
+                pqr = !pqr;
+            }
+        }
+    </script>
+</body>
+</html>

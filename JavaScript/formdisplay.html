@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table, th, td { border: 1px solid black; border-collapse: collapse; padding: 8px; }
+    </style>
+</head>
+<body>
+    <form id="myForm">
+        <label for="first_name">First Name</label>
+        <input type="text" id="first_name" name="first_name">
+        <br><br>
+
+        <label for="last_name">Last Name</label>
+        <input type="text" id="last_name" name="last_name">
+        <br><br>
+        
+        <button type="submit">Submit</button>
+    </form>
+    <br>
+    <table id="myTable">
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Action</th>
+        </tr>
+    </table>
+
+    <script>
+        document.querySelector('form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            var firstName = document.getElementById('first_name').value;
+            var lastName = document.getElementById('last_name').value;
+            
+            var table = document.getElementById('myTable');
+            var row = table.insertRow();
+        
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2);
+            
+            cell1.innerHTML = firstName;
+            cell2.innerHTML = lastName;
+
+            var deleteButton = document.createElement('button');
+            deleteButton.innerHTML = 'Delete';
+            deleteButton.onclick = function() {
+                table.deleteRow(row.rowIndex);
+            };
+            cell3.appendChild(deleteButton);
+
+            document.getElementById('first_name').value = '';
+            document.getElementById('last_name').value = '';
+        });
+    </script>
+</body>
+</html>

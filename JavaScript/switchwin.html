@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Div-task</title>
+    <style>
+        .c1 {
+            border: 1px solid black;
+            height: 100px;
+            width: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2em; 
+            cursor: pointer; 
+        }
+        .f1 {
+            display: flex;
+        }
+    </style>
+</head>
+<body>
+    <div class="f1">
+        <div class="c1" onclick="abc(this)"></div>
+        <div class="c1" onclick="abc(this)"></div>
+        <div class="c1" onclick="abc(this)"></div>
+    </div>
+    <div class="f1">
+        <div class="c1" onclick="abc(this)"></div>
+        <div class="c1" onclick="abc(this)"></div>
+        <div class="c1" onclick="abc(this)"></div>
+    </div>
+    <div class="f1">
+        <div class="c1" onclick="abc(this)"></div>
+        <div class="c1" onclick="abc(this)"></div>
+        <div class="c1" onclick="abc(this)"></div>
+    </div>
+
+    <script>
+        let currentPlayer = 'X';
+        let moves = 0;
+
+        function abc(c1) {
+            if (c1.innerHTML === "") {
+                c1.innerHTML = currentPlayer;
+                moves++;
+                if (checkWin()) {
+                    alert(`${currentPlayer} wins!`); // Corrected message
+                    resetGame();
+                } else if (moves === 9) {
+                    alert("It's a draw!");
+                    resetGame();
+                } else {
+                    currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+                }
+            }
+        }
+
+        function checkWin() {
+            let cells = document.querySelectorAll('.c1');
+            const winningCombos = [
+                [0, 1, 2], [3, 4, 5], [6, 7, 8], 
+                [0, 3, 6], [1, 4, 7], [2, 5, 8],
+                [0, 4, 8], [2, 4, 6]             
+            ];
+
+            for (let combo of winningCombos) {
+                if (cells[combo[0]].innerHTML !== "" &&
+                    cells[combo[0]].innerHTML === cells[combo[1]].innerHTML &&
+                    cells[combo[1]].innerHTML === cells[combo[2]].innerHTML) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        function resetGame() {
+            let cells = document.querySelectorAll('.c1');
+            cells.forEach(cell => {
+                cell.innerHTML = "";
+            });
+            currentPlayer = 'X';
+            moves = 0;
+        }
+    </script>
+</body>
+</html>
